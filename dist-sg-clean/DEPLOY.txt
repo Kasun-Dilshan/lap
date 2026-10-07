@@ -1,0 +1,12 @@
+﻿SiteGround upload package (frontend + backend)
+==============================================
+Extract ALL contents into the site document root (e.g. public_html or lap.serendibgroups.com root)
+so these are siblings:
+  index.php, index.html, site-check.php, .htaccess, assets/, backend/, database/
+
+1. Confirm backend/.env has correct SiteGround DB credentials
+2. Import database/schema.sql (+ seed.sql if needed) in phpMyAdmin
+3. Purge SuperCacher for this site
+4. Open https://YOUR-DOMAIN/site-check.php  (all checks should be true)
+5. Open homepage and hard-refresh (Ctrl+F5)
+6. If blank page: Network tab → assets/app.js must be 200 + javascript (not HTML)

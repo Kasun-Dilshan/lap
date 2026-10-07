@@ -1,0 +1,41 @@
+DirectoryIndex index.php index.html
+Options -MultiViews -Indexes
+
+<IfModule mod_mime.c>
+  AddType application/javascript .js .mjs
+  AddType text/css .css
+  AddType text/html .html
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(js|mjs|css)$">
+    Header set Cache-Control "public, max-age=3600"
+    Header set X-Content-Type-Options "nosniff"
+  </FilesMatch>
+</IfModule>
+
+RewriteEngine On
+RewriteBase /
+
+# Never rewrite real static files (fixes blank SPA when JS was served as HTML)
+RewriteRule ^assets/ - [L]
+RewriteRule ^site-check\.php$ - [L]
+RewriteRule \.(?:js|mjs|css|map|png|jpe?g|gif|svg|ico|webp|woff2?|ttf|html)$ - [L]
+
+# Block direct browsing of sensitive backend folders
+RewriteRule ^backend/(config|controllers|scripts|services|src|routes\.php|router\.php|\.env)(/|$) - [F,L]
+
+# Send all /api requests to the PHP front controller
+RewriteRule ^api(?:/.*)?$ backend/public/index.php [QSA,L]
+
+# Existing files/directories as-is
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# SPA fallback through PHP so SiteGround serves HTML correctly
+RewriteRule ^ index.php [L]

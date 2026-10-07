@@ -1,0 +1,25 @@
+﻿SiteGround blank-page fix — upload checklist
+============================================
+
+IMPORTANT: extract into the exact folder that lap.serendibgroups.com uses
+(usually public_html for that subdomain — NOT a nested subfolder).
+
+After extract, this folder MUST contain:
+  index.php
+  index.html
+  site-check.php
+  .htaccess
+  assets/app.js
+  assets/style.css
+  backend/
+
+1. Delete old assets/*.js files first (or empty the assets folder), then upload.
+2. Site Tools → Speed → Caching → flush / purge SuperCacher for this site.
+3. Open: https://lap.serendibgroups.com/site-check.php
+   All checks must be true, especially assets_app_js.
+4. Open homepage and hard refresh (Ctrl+F5).
+5. If still blank: DevTools → Network → click app.js
+   - Status must be 200
+   - Content-Type must be javascript (NOT text/html)
+
+Timezone: Asia/Colombo is set in backend/.env
