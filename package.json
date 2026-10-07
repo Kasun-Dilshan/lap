@@ -1,0 +1,24 @@
+{
+  "name": "company-laptop-tracking-management-system",
+  "version": "2.0.0",
+  "description": "Production-ready Company Laptop Tracking & Management System (PHP + MySQL)",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start:backend": "npm --prefix backend start",
+    "setup:db": "npm --prefix backend run setup-db",
+    "start:frontend": "npm --prefix frontend run dev",
+    "monitor": "npm --prefix backend run monitor",
+    "simulate:fleet": "node agent/simulate-fleet.js"
+  },
+  "keywords": [
+    "laptop-tracking",
+    "asset-management",
+    "mdm",
+    "hardware-monitoring",
+    "php",
+    "mysql"
+  ],
+  "author": "Apex IT Systems",
+  "license": "ISC"
+}

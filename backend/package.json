@@ -1,0 +1,19 @@
+{
+  "name": "company-laptop-management-backend",
+  "version": "2.0.0",
+  "description": "PHP + MySQL backend for Company Laptop Tracking & Management System",
+  "scripts": {
+    "start": "php -S localhost:5000 router.php",
+    "dev": "php -S localhost:5000 router.php",
+    "setup-db": "php scripts/setup-db.php",
+    "monitor": "php scripts/heartbeat-monitor.php"
+  },
+  "keywords": [
+    "laptop-tracking",
+    "asset-management",
+    "php",
+    "mysql"
+  ],
+  "author": "Apex IT Systems",
+  "license": "ISC"
+}
